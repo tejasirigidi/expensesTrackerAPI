@@ -2,10 +2,11 @@ package com.example.expenseTrackerApi.controller;
 
 import com.example.expenseTrackerApi.model.Users;
 import com.example.expenseTrackerApi.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class userController {
@@ -17,19 +18,27 @@ public class userController {
     }
 
     @PostMapping("/signUp")
-    public Users userSignUp(@RequestBody Users user) {
+    public ResponseEntity<Users> userSignUp(@RequestBody Users user) {
         Users user1 = userService.userSignUp(user);
-        return user1;
+        return new ResponseEntity<>(user1,  HttpStatus.OK);
     }
 
     @PostMapping("/Login")
-    public Users userLogin(@RequestBody Users user) {
-        return userService.findUser(user);
+    public ResponseEntity<Users> userLogin(@RequestBody Users user) {
+        Users user1 = userService.findUser(user);
+        return new ResponseEntity<>(user1,  HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public Users userUpdate(@RequestBody Users user) {
+    public ResponseEntity<Users> userUpdate(@RequestBody Users user) {
         Users user1 = userService.userSignUp(user);
-        return user1;
+        return new ResponseEntity<>(user1,  HttpStatus.OK);
     }
+
+    @GetMapping("/getUsers")
+    public ResponseEntity<List<Users>> getUsers() {
+        List<Users> userDetails = userService.getAllUsers();
+        return new ResponseEntity<>(userDetails, HttpStatus.OK);
+    }
+
 }
