@@ -5,6 +5,7 @@ import com.example.expenseTrackerApi.model.Users;
 import com.example.expenseTrackerApi.repo.UserRepo;
 import com.example.expenseTrackerApi.repo.ExpensesRepo;
 import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepo userRepo;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
     public UserService(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
@@ -29,7 +31,7 @@ public class UserService {
 
         Users user = new Users();
         user.setUsername(request.getUsername());
-        user.setPassword(request.getPassword());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         List<Expenses> expenses = new ArrayList<>();
         if(request.getExpenses() != null) {
