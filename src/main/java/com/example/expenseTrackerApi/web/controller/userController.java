@@ -1,6 +1,6 @@
-package com.example.expenseTrackerApi.controller;
+package com.example.expenseTrackerApi.web.controller;
 
-import com.example.expenseTrackerApi.model.Users;
+import com.example.expenseTrackerApi.model.entity.Users;
 import com.example.expenseTrackerApi.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +24,9 @@ public class userController {
     }
 
     @PostMapping("/Login")
-    public ResponseEntity<Users> userLogin(@RequestBody Users user) {
-        Users user1 = userService.findUser(user);
-        return new ResponseEntity<>(user1,  HttpStatus.OK);
+    public ResponseEntity<String> userLogin(@RequestBody Users user) {
+        String response = userService.findUser(user);
+        return new ResponseEntity<>(response,  HttpStatus.OK);
     }
 
     @PutMapping("/update")

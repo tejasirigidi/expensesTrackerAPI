@@ -1,5 +1,6 @@
 package com.example.expenseTrackerApi.model;
 
+import com.example.expenseTrackerApi.model.entity.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

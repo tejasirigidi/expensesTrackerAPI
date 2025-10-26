@@ -1,6 +1,6 @@
 package com.example.expenseTrackerApi.aop;
 
-import com.example.expenseTrackerApi.model.Users;
+import com.example.expenseTrackerApi.model.entity.Users;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
