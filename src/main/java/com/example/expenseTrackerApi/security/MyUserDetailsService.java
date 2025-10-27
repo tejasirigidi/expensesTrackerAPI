@@ -1,7 +1,5 @@
 package com.example.expenseTrackerApi.security;
 
-import com.example.expenseTrackerApi.model.UserPrincipal;
-import com.example.expenseTrackerApi.model.entity.Users;
 import com.example.expenseTrackerApi.repo.UserRepo;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
